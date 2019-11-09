@@ -11,18 +11,28 @@ function setup() {
     grid = new Grid(COLS, ROWS);
 }
 
+/**
+ * Update the DOM elements to reflect the run state of the grid
+ * and update the grid run state
+ */
 function runGame() {
     let state = document.getElementById("state");
+    let run = document.getElementById("run");
     if (rungame == false) {
         state.className = "started";
         state.innerText = "Running";
+        run.innerText = "Stop";
     } else {
         state.className = "stopped";
         state.innerText = "Stopped";
+        run.innerText = "Start";
     }
     rungame = !rungame;
 }
 
+/**
+ * Initialise the grid with the specified value in the DOM form 'gridfill' 
+ */
 function newgrid() {
     grid.newGrid(document.getElementById("gf_white").checked ? 1 : 0);
 }
