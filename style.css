@@ -5,6 +5,8 @@ body {
 
 #sketch_view {
     top: 0;
+    width: auto;
+    height: auto
 }
 
 #settings {
@@ -21,10 +23,6 @@ body {
     font-weight: normal;
     color: #ffff61;
 }
-#ray_color {
-    border: none;
-    border-radius: 2px;
-}
 
 #gridfill {
     font-weight: lighter;
@@ -38,4 +36,8 @@ body {
 
 .started {
     color: green;
+}
+
+.grid_pref {
+    width: 30px;
 }

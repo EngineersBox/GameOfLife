@@ -26,7 +26,6 @@ class Grid {
             [-1, -1],
             [0, -1],
             [1, -1]
-
         ];
     }
 
@@ -44,7 +43,7 @@ class Grid {
      * 
      * @param {Number} multiplier 
      */
-    randomise(multiplier=1.15) {
+    randomise(multiplier=1.17) {
         // '~~' is shorthand for Math.floor()
         this.grid = this.grid.map(x => x.map(e => ~~(Math.random() * multiplier)));
     }
@@ -59,19 +58,15 @@ class Grid {
             for (let j = 0; j < this.grid[0].length; j++) {
                 let count = 0;
                 for (let coord of this.surroundings) {
-                    if (this.state(i + coord[0], j + coord[1]) != null) {
-                        count += this.grid[i + coord[0]][j + coord[1]];
+                    let cState = this.state(i + coord[0], j + coord[1]);
+                    if (cState) {
+                        count += cState;
                     }
                 }
-                console.log(count);
                 if (this.grid[i][j] == 1) {
-                    if (count < 2 || count > 3) {
-                        tempGrid[i][j] = 0;
-                    }
+                    tempGrid[i][j] = count < 2 || count > 3 ? 0 : 1;
                 } else {
-                    if (count == 3) {
-                        tempGrid[i][j] = 1;
-                    }
+                    tempGrid[i][j] = count == 3 ? 1 : 0;
                 }
             }
         }
@@ -79,7 +74,7 @@ class Grid {
     }
 
     /**
-     * Return the binary state of a valid position, otherwise null
+     * Return the binary state of a valid position
      * 
      * @param {Number} x 
      * @param {Number} y 
@@ -89,7 +84,7 @@ class Grid {
         if (0 <= x && x < this.grid.length && 0 <= y && y < this.grid[0].length) {
             return this.grid[x][y];
         } else {
-            return null;
+            return;
         }
     }
 

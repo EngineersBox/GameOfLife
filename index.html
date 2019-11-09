@@ -21,31 +21,55 @@
                     <th>Setting</th>
                 </tr>
                 <tr>
-                    <td>Randomise</td>
+                    <td>Columns</td>
                     <td>
-                        <button id="randomise" onclick="grid.randomise()">Randomise Grid</button>
+                        <input class="grid_pref" id="cols_in" type="number" value="50">
                     </td>
                 </tr>
                 <tr>
-                    <td>New Grid</td>
+                    <td>Rows</td>
                     <td>
-                        <button id="newgrid" onclick="newgrid()">New Grid</button>
+                        <input class="grid_pref" id="rows_in" type="number" value="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Square Width</td>
+                    <td>
+                        <input class="grid_pref" id="sq_width" type="number" value="12">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Refresh Grid</td>
+                    <td>
+                        <button type="button" onclick="setup()">Refresh Grid</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Randomise</td>
+                    <td>
+                        <button id="randomise" type="button" onclick="grid.randomise();initGrid();">Randomise Grid</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fill Grid</td>
+                    <td>
                         <form id="gridfill">
                             <input id="gf_white" type="radio" name="colour" value="1" checked> White<br>
                             <input id="gf_black" type="radio" name="colour" value="0"> Black<br>
                         </form>
+                        <button id="newgrid" type="button" onclick="newgrid()">Fill Grid</button>
                     </td>
                 </tr>
                 <tr>
                     <td>Apply Rules Step</td>
                     <td>
-                        <button id="applyrules" onclick="grid.applyRules()">Apply Rules</button>
+                        <button id="applyrules" type="button" onclick="grid.applyRules()">Apply Rules</button>
                     </td>
                 </tr>
                 <tr>
                     <td>Start / Stop Game</td>
                     <td>
-                        <button id="run" onclick="runGame()">Start</button>
+                        <button id="run" type="button" onclick="runGame()">Start</button>
                     </td>
                 </tr>
                 <tr>
