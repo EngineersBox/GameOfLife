@@ -6,10 +6,19 @@ let grid;
 let rungame = false;
 let canvas;
 
+/**
+ * Get a DOM element with a specific ID
+ * 
+ * @param {String} id
+ * @returns {*} DOM Element
+ */
 function getElem(id) {
     return document.getElementById(id);
 }
 
+/**
+ * Initialise the grid assosciated constants
+ */
 function initGrid() {
     COLS = parseInt(getElem("cols_in").value);
     ROWS = parseInt(getElem("rows_in").value);

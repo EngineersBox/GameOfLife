@@ -17,15 +17,15 @@ class Grid {
         this.cols = cols;
         this.rows = rows;
         this.grid = create2DArray(this.cols, this.rows);
-        this.surroundings = [
-            [-1, 1],
-            [0, 1],
-            [1, 1],
-            [-1, 0],
-            [1, 0],
-            [-1, -1],
-            [0, -1],
-            [1, -1]
+        this.neighbours = [
+            {x:-1, y:-1},
+            {x:-1, y: 0},
+            {x:-1, y: 1},
+            {x: 0, y:-1},
+            {x: 0, y: 1},
+            {x: 1, y:-1},
+            {z: 1, y: 0},
+            {x: 1, y: 1}
         ];
     }
 
@@ -43,7 +43,7 @@ class Grid {
      * 
      * @param {Number} multiplier 
      */
-    randomise(multiplier=1.17) {
+    randomise(multiplier=1.5) {
         // '~~' is shorthand for Math.floor()
         this.grid = this.grid.map(x => x.map(e => ~~(Math.random() * multiplier)));
     }
@@ -56,17 +56,15 @@ class Grid {
         let tempGrid = this.grid.slice();
         for (let i = 0; i < this.grid.length; i++) {
             for (let j = 0; j < this.grid[0].length; j++) {
-                let count = 0;
-                for (let coord of this.surroundings) {
-                    let cState = this.state(i + coord[0], j + coord[1]);
-                    if (cState) {
-                        count += cState;
-                    }
-                }
+                let live_count = this.neighbours.reduce((acc, pos) => 
+                    acc + this.state(
+                        (i + pos.x + this.cols) % this.cols,
+                        (j + pos.y + this.rows) % this.rows)
+                , 0);
                 if (this.grid[i][j] == 1) {
-                    tempGrid[i][j] = count < 2 || count > 3 ? 0 : 1;
+                    tempGrid[i][j] = (live_count < 2 || live_count > 3) ? 0 : 1;
                 } else {
-                    tempGrid[i][j] = count == 3 ? 1 : 0;
+                    tempGrid[i][j] = (live_count == 3) ? 1 : 0;
                 }
             }
         }
@@ -84,7 +82,7 @@ class Grid {
         if (0 <= x && x < this.grid.length && 0 <= y && y < this.grid[0].length) {
             return this.grid[x][y];
         } else {
-            return;
+            return null;
         }
     }
 
