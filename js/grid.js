@@ -36,7 +36,7 @@ class Grid {
             for (let j = 0; j < this.grid[0].length; j++) {
                 let count = 0;
                 for (let coord of this.surroundings) {
-                    if (this.state(coord[0], coord[1])) {
+                    if (this.state(coord[0], coord[1]) != null) {
                         count += this.state(coord[0], coord[1]);
                     }
                 }

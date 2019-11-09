@@ -1,3 +1,41 @@
-html {
+body {
     background-color: #232323;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#sketch_view {
+    top: 0;
+}
+
+#settings {
+    margin-top: 10px;
+}
+
+#settings,th {
+    color: #d88383;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#settings,td {
+    font-weight: normal;
+    color: #ffff61;
+}
+#ray_color {
+    border: none;
+    border-radius: 2px;
+}
+
+#gridfill {
+    font-weight: lighter;
+    color: white;
+    font-size: 15px;
+}
+
+.stopped {
+    color: red;
+}
+
+.started {
+    color: green;
 }

@@ -14,5 +14,45 @@
             <script type="text/javascript" src="js/grid.js"></script>
             <script type="text/javascript" src="js/sketch.js"></script>
         </div>
+        <div id="settings">
+            <table id="settings_table">
+                <tr>
+                    <th>Description</th>
+                    <th>Setting</th>
+                </tr>
+                <tr>
+                    <td>Randomise</td>
+                    <td>
+                        <button id="randomise" onclick="grid.randomise()">Randomise Grid</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>New Grid</td>
+                    <td>
+                        <button id="newgrid" onclick="newgrid()">New Grid</button>
+                        <form id="gridfill">
+                            <input id="gf_white" type="radio" name="colour" value="1" checked> White<br>
+                            <input id="gf_black" type="radio" name="colour" value="0"> Black<br>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Apply Rules Step</td>
+                    <td>
+                        <button id="applyrules" onclick="grid.applyRules()">Apply Rules</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Start / Stop Game</td>
+                    <td>
+                        <button id="run" onclick="runGame()">Start/Stop</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Game State</td>
+                    <td id="state" class="stopped">Stopped</td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>
